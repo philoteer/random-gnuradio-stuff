@@ -1,1 +1,2 @@
-foo
+wx-based fft sink is too slow on some computers. QT sink has limited functions, but is faster.
+GRC 3.7.9
