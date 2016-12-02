@@ -1,0 +1,2 @@
+WX-based FFT sink (used by several sample software) is too slow on some computers. QT sink is faster. 
+GRC 3.7.9
