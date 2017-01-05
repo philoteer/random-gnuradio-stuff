@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>900</value>
+      <value>1128</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -242,7 +242,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>8</value>
+      <value>25</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -368,7 +368,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(416, 198)</value>
+      <value>(424, 206)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -619,7 +619,7 @@
     </param>
     <param>
       <key>ant0</key>
-      <value></value>
+      <value>RX2</value>
     </param>
     <param>
       <key>bw0</key>
