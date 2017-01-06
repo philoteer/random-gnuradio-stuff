@@ -34,7 +34,5 @@ class FFTshift(gr.basic_block):
 		for cnt in range(0,ps_len):
 			out[cnt] = numpy.fft.fftshift(in0[cnt])
 			
-		#TODO
-		#fftshift
 		self.consume_each(consume_len)
 		return ps_len
