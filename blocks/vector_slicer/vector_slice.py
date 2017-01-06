@@ -14,6 +14,12 @@ class vector_slice(gr.basic_block):
 		self.size_new = size_new
 		self.startval = start
 
+	def update_size(self,size_new):
+		self.size_new = size_new
+
+	def update_start(self,start):
+		self.startval = start
+
 	#run
 	def general_work(self, input_items, output_items):
 		in0 = input_items[0]
