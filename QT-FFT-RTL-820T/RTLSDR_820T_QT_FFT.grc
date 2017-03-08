@@ -219,11 +219,11 @@
     </param>
     <param>
       <key>step</key>
-      <value>8</value>
+      <value>1</value>
     </param>
     <param>
       <key>stop</key>
-      <value>40</value>
+      <value>50</value>
     </param>
     <param>
       <key>rangeType</key>
