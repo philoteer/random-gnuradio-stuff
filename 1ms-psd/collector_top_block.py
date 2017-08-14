@@ -65,7 +65,7 @@ class nist(gr.top_block, Qt.QWidget):
 		self.fft_len = fft_len = 1250
 		self.cal_dB = cal_dB = -9.0
 		self.window_compenstation = window_compenstation = 2
-		self.target_freq = target_freq = 540e6
+		self.target_freq = target_freq = 709e6
 		self.samp_rate = samp_rate = 12.5e6
 		self.psd_normalization = psd_normalization = [1.0/fft_len]*fft_len
 		#self.lo_offset = lo_offset = 10.2e6
