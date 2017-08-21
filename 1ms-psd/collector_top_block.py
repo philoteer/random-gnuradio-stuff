@@ -29,6 +29,7 @@ from gnuradio.filter import firdes
 from optparse import OptionParser
 from fftprocess import fftprocess
 from dumptofile import dumptofile
+from consts import my_consts
 import sip
 import sys
 import time
@@ -62,17 +63,16 @@ class nist(gr.top_block, Qt.QWidget):
 		##################################################
 		# Variables
 		##################################################
-		self.fft_len = fft_len = 1250
-		self.cal_dB = cal_dB = -9.0
+		self.fft_len = fft_len = my_consts.fft_size()
+		self.cal_dB = cal_dB = my_consts.cal_dB()
 		self.window_compenstation = window_compenstation = 2
-		self.target_freq = target_freq = 709e6
-		self.samp_rate = samp_rate = 12.5e6
+		self.target_freq = target_freq = my_consts.center_freq()
+		self.samp_rate = samp_rate = my_consts.samp_rate()
 		self.psd_normalization = psd_normalization = [1.0/fft_len]*fft_len
-		#self.lo_offset = lo_offset = 10.2e6
-		self.lo_offset = lo_offset = -12.5e6
-		self.gain = gain = 20
+		self.lo_offset = lo_offset = my_consts.lo_offset()
+		self.gain = gain = my_consts.LNA_gain()
 		self.cal = cal = 10**((cal_dB-gain)/20)
-		self.new_bin_size = new_bin_size = 56
+		self.new_bin_size = new_bin_size = my_consts.agg_out()
 
 		##################################################
 		# Blocks
@@ -87,7 +87,7 @@ class nist(gr.top_block, Qt.QWidget):
 		self.uhd_usrp_source_0.set_samp_rate(samp_rate)
 		self.uhd_usrp_source_0.set_center_freq(uhd.tune_request(target_freq,lo_offset), 0)
 		self.uhd_usrp_source_0.set_gain(gain, 0)
-		self.uhd_usrp_source_0.set_antenna("TX/RX", 0)
+		self.uhd_usrp_source_0.set_antenna(my_consts.antenna_port(), 0)
 		self.qtgui_vector_sink_f_0 = qtgui.vector_sink_f(
 			new_bin_size,
 			0,
