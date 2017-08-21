@@ -1,2 +1,3 @@
-for personal experiment - 1ms level psd data from an LTE band 17.
+Dumps 1ms level psd data from an LTE band 17.
+Data structure: timestamp (double) -> 180kHz 56 PSD samples (the middle 50 bins are useful data) -> timestamp -> data -> ...
 gnuradio-3.7.9 + USRP N210 + UBX
