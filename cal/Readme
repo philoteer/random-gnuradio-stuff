@@ -1,1 +1,3 @@
 Calibration files generated using https://github.com/dave-aragon/sdr-calibrator
+
+cscape_cal_ampl_hackrf.py: a dirty hackjob to get the program running on HackRF.
