@@ -4,22 +4,41 @@ class my_consts:
 	#Data Collection Config
 	@staticmethod
 	def time_length_per_file():
-		return 1800	#1800s = 30min per file
+		return 3600	#3600 = 1H per file
 	@staticmethod
 	def cal_dB():
-		return  -9.0	#for dB -> dBm calibration
+		return  0.0	#for dB -> dBm calibration
 	@staticmethod
 	def center_freq():
-		return  709e6	#709MHz
+		return  3.625e9	#3.625GHz center freq
 	@staticmethod
 	def samp_rate():
-		return  12.5e6	#12.5MS/s
+		return  200e6	#200MS/s
+	#UHD Source ONLY
 	@staticmethod
-	def lo_offset():
-		return  -12.5e6	#-12.5MHz
+	def usrp_lo_offset():	#-12.5MHz offset
+		return  0	
+	#UHD Source ONLY
 	@staticmethod
-	def LNA_gain():
-		return  20	#20dB
+	def usrp_gain():
+		return  15	#15dB
+	
+	#OSMOSDR only
+	@staticmethod
+	def osmosdr_RF_gain():
+		return 0
+
+	#OSMOSDR only
+	@staticmethod
+	def osmosdr_IF_gain():
+		return 0
+
+	#OSMOSDR only
+	@staticmethod
+	def osmosdr_BB_gain():
+		return 0
+
+
 	@staticmethod
 	def antenna_port():
 		return  "RX2"	#TX/RX or RX2
@@ -27,22 +46,35 @@ class my_consts:
 	#FFT Config
 	@staticmethod
 	def fft_size():
-		return 1250	#original FFT size
-		
+		return 200	#original FFT size
+	@staticmethod
+	def fft_threads():
+		return  1	## of fft threads		
 	#Aggregation Config
 	@staticmethod
 	def agg_out():
-		return 56		#PSD length after aggregation
+		return 150		#PSD length after aggregation
 	@staticmethod
 	def hold_times():
-		return 10		#How much PSD samples to max hold
+		return 50000		#How much PSD samples to max hold
 	@staticmethod
 	def in_bins_per_out_bin():
-		return 18		#18 PSD bins in -> 1 PSD bin out
+		return 1		#18 PSD bins in -> 1 PSD bin out
 	@staticmethod
 	def psd_start():
-		return 121		#first 121 points from the input FFT data are dropped.
+		return 25		#first 121 points from the input FFT data are dropped.
 	@staticmethod
 	def psd_end():
-		return 1129	#data after the 1129th point from the input FFT data are dropped.
+		return 175		#data after the 1129th point from the input FFT data are dropped.
 		
+	@staticmethod
+	def source_type():
+		return "CONST"		#CONST, USRP, or OSMOCOM
+
+	@staticmethod
+	def debug_mode():
+		return True		#data after the 1129th point from the input FFT data are dropped.
+
+	@staticmethod
+	def keep_1_fft_blk_per_n():
+		return 10		#Out of 4 fft_len snapshots, only 1 is used for the calculation.

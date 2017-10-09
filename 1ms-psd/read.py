@@ -5,13 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io as sio
 import scipy.interpolate
+from consts import my_consts
 
 #./read.py filename -p val / -m filename.mat
 if len(sys.argv) <= 1:
 	print "usage"
 	print "read.py 'filename' -p 0 : plot 0th block."
 	print "read.py 'filename' -m matlab_filename : convert to matlab file."
-	print "read.py 'filename' -w 100 500 : plot waterfall, from 100ms to 500ms."
+	print "read.py 'filename' -w 100 500 : plot waterfall, from 100 th blk to 500 th blk."
 	quit()
 else:
 	path = sys.argv[1]
@@ -30,12 +31,12 @@ data = np.fromfile(path,dtype=np.float32)
 timestamp = np.fromfile(path,dtype=np.float64)
 
 #reshape, drop first 2 cols (which is actually timestamp)
-data = data.reshape(len(data)/58,58)
+data = data.reshape(len(data)/(my_consts.agg_out()+2),(my_consts.agg_out()+2))
 data = np.delete(data,0,1)
 data = np.delete(data,0,1)
 
 #drop data, and keep timestamp.
-timestamp = timestamp.reshape(len(timestamp)/29,29)
+timestamp = timestamp.reshape(len(timestamp)/((my_consts.agg_out()+2)/2),((my_consts.agg_out()+2)/2))
 timestamp = timestamp[:,0]
 
 if mode == '-p':

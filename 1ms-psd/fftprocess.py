@@ -7,7 +7,7 @@ from consts import my_consts
 
 class fftprocess(gr.basic_block):
 
-    def __init__(self):
+	def __init__(self):
 		gr.basic_block.__init__(self,
 			name="fftprocess",
 			in_sig=[(numpy.float32,my_consts.fft_size())],
@@ -22,7 +22,7 @@ class fftprocess(gr.basic_block):
 		self.fft_size = my_consts.fft_size()
 		self.agg_out = my_consts.agg_out()
 
-    def general_work(self, input_items, output_items):
+	def general_work(self, input_items, output_items):
 		in0 = input_items[0]
 		out = output_items[0]
 		#number of fft blocks to generate during this iteration.

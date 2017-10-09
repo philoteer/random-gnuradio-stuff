@@ -20,7 +20,8 @@ class dumptofile(gr.basic_block):
 			in_sig=[(numpy.float32,my_consts.agg_out())],
 			out_sig=None)
 			
-		self.aggregate_length = 1000 * my_consts.time_length_per_file() 
+		self.aggregate_length = int((my_consts.samp_rate()/my_consts.fft_size())/(my_consts.hold_times()*my_consts.keep_1_fft_blk_per_n()) * my_consts.time_length_per_file())
+		#print str(self.aggregate_length)
 		self.cnt = 0
 		self.opened_file = open(generatefilename(),'wb')
 
