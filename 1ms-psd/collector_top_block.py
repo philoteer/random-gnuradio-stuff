@@ -106,8 +106,8 @@ class nist(gr.top_block, Qt.QWidget):
 				),
 			)
 			self.uhd_usrp_source_0.set_samp_rate(samp_rate)
-			self.uhd_usrp_source_0.set_center_freq(uhd.tune_request(target_freq,lo_offset), 0)
-			self.uhd_usrp_source_0.set_gain(gain, 0)
+			self.uhd_usrp_source_0.set_center_freq(uhd.tune_request(target_freq,usrp_lo_offset), 0)
+			self.uhd_usrp_source_0.set_gain(usrp_gain, 0)
 			self.uhd_usrp_source_0.set_antenna(my_consts.antenna_port(), 0)
 
 		#osmosdr mode
