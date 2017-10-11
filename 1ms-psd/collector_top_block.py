@@ -77,6 +77,8 @@ class nist(gr.top_block, Qt.QWidget):
 		self.samp_rate = samp_rate = my_consts.samp_rate()
 		self.psd_normalization = psd_normalization = ([(window_compenstation/fft_len) **2 ]*my_consts.agg_out()) #(2.0/FFT_SIZE) ^2 (applied after fft -> mag^2 to save processing power)
 		self.cal = cal = 10**((cal_dB-my_consts.usrp_gain())/20)
+		if (my_consts.source_type() == "OSMOCOM"):
+			self.cal = cal = 10**((cal_dB-my_consts.osmosdr_RF_gain() - my_consts.osmosdr_IF_gain() - my_consts.osmosdr_BB_gain())/20)
 		self.new_bin_size = new_bin_size = my_consts.agg_out()
 
 		#for usrp
@@ -170,7 +172,7 @@ class nist(gr.top_block, Qt.QWidget):
 		self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(fft_len)
 
 		#if calibration needed: create cal block
-		if abs(cal_dB) > 0.1:
+		if abs(cal) > 0.1:
 			self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vcc((cal, ))
 
 		#my blocks
@@ -188,7 +190,7 @@ class nist(gr.top_block, Qt.QWidget):
 		##################################################
 		# Connections
 		##################################################
-		if abs(cal_dB) > 0.1:	#if calibration needed:
+		if abs(cal) > 0.1:	#if calibration needed:
 			# usrp -> calibration
 			self.connect((self.uhd_usrp_source_0, 0), (self.blocks_multiply_const_vxx_0, 0))
 
