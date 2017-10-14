@@ -4,9 +4,10 @@ import numpy
 from gnuradio import gr
 import time
 import datetime
+import subprocess
 from consts import my_consts
 
-def generatefilename():
+def generatefilename():		
 	a = datetime.datetime.utcnow().isoformat()+".754sp"
 	a = a.replace(":","_")	#Windows file name quirk
 	print "New file: " + a
@@ -23,7 +24,8 @@ class dumptofile(gr.basic_block):
 		self.aggregate_length = int((my_consts.samp_rate()/my_consts.fft_size())/(my_consts.hold_times()*my_consts.keep_1_fft_blk_per_n()) * my_consts.time_length_per_file())
 		#print str(self.aggregate_length)
 		self.cnt = 0
-		self.opened_file = open(generatefilename(),'wb')
+		self.opened_file_name = generatefilename()
+		self.opened_file = open(self.opened_file_name,'wb')
 
 	def general_work(self, input_items, output_items):
 		#init_time = time.time()
@@ -39,7 +41,12 @@ class dumptofile(gr.basic_block):
 		if (self.cnt >= self.aggregate_length):
 			self.cnt = 0
 			self.opened_file.close()
-			self.opened_file = open(generatefilename(),'wb')
+			
+			if (my_consts.upload_file()):
+				subprocess.Popen(["curl", "-F", "pw="+my_consts.upload_pw(),"-F","fileformID=@"+self.opened_file_name,my_consts.upload_path()])
+				
+			self.opened_file_name = generatefilename()
+			self.opened_file = open(self.opened_file_name,'wb')
 		
 		#consume, return.
 		self.consume_each(len(in0))
