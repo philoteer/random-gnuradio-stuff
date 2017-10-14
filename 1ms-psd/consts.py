@@ -78,3 +78,15 @@ class my_consts:
 	@staticmethod
 	def keep_1_fft_blk_per_n():
 		return 10		#Out of 4 fft_len snapshots, only 1 is used for the calculation.
+
+	@staticmethod
+	def upload_file():
+		return True		#auto-upload (curl needed)
+
+	@staticmethod
+	def upload_path():
+		return "http://piloteer.wo.tc/~piloteer/test/upload.php"		#data after the 1129th point from the input FFT data are dropped.
+		
+	@staticmethod
+	def upload_pw():
+		return "PDP11"
