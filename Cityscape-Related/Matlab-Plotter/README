@@ -1,0 +1,8 @@
+A simple Matlab example for plotting PSD estimate data from CityScape.
+
+Steps:
+
+1.Download PSD estimates file from http://cityscape.cloudapp.net/
+2.Use	CityScapePSDPlotter.py (available: https://github.com/cityscapesc/specobs/tree/master/main/tools/RAW_IQ_or_PSD_Data_Parser/Python_Based_Parser(Recommended) ) to convert it to a Matlab file.
+3.Edit plotter.m, so as it would plot to the right file and frequencies.
+4.Run
