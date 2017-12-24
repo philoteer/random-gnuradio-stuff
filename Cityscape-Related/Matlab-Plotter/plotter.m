@@ -1,6 +1,6 @@
 close all; clear all;
 %File path
-cscape_path = 'TEMPLE01/TEMPLE01.mat';
+cscape_path = 'TEMPLE01.mat';
 
 load(cscape_path);
 
