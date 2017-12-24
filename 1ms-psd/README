@@ -1,3 +1,5 @@
-Dumps 1ms level psd data from an LTE band 17.
-Data structure: timestamp (double) -> 180kHz 56 PSD samples (the middle 50 bins are useful data) -> timestamp -> data -> ...
-gnuradio-3.7.9 + USRP N210 + UBX
+Makes sliding power estimates and dumps them to a file. 
+
+Dumped file format: unix timestamp (double) -> 180kHz 56 PSD samples (the middle 50 bins are useful data) -> timestamp -> data -> ...
+
+Tested on: gnuradio-3.7.9 + USRP N210 + UBX.
