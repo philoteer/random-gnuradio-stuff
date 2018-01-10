@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Mon Oct  3 09:13:05 2016</timestamp>
   <block>
@@ -30,7 +30,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 8)</value>
+      <value>(0, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -93,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 5)</value>
+      <value>(264, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 6)</value>
+      <value>(496, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 6)</value>
+      <value>(368, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -253,7 +253,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(0, 271)</value>
+      <value>(32, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -312,7 +312,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(24, 198)</value>
+      <value>(40, 140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -341,6 +341,38 @@
     <param>
       <key>seed</key>
       <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>note</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value>Transmits a Gaussian noise-like signal using HackRF (or with any OSMOCOM source).
+Change device arguments as necessary.</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(768, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>note_0</value>
+    </param>
+    <param>
+      <key>note</key>
+      <value></value>
     </param>
   </block>
   <block>
@@ -1263,7 +1295,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(328, 210)</value>
+      <value>(456, 204)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1382,7 +1414,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(360, 384)</value>
+      <value>(248, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1421,7 +1453,7 @@
   </connection>
   <connection>
     <source_block_id>analog_noise_source_x_0</source_block_id>
-    <sink_block_id>osmosdr_sink_0</sink_block_id>
+    <sink_block_id>pfb_interpolator_ccf_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

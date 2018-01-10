@@ -18,7 +18,7 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value>Parameters -&gt;</value>
     </param>
     <param>
       <key>description</key>
@@ -30,7 +30,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 8)</value>
+      <value>(8, 16)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -89,7 +89,7 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value>Power difference probe rate</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(560, 16)</value>
+      <value>(640, 16)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value># of Pts to Average</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -191,7 +191,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(624, 212)</value>
+      <value>(576, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -238,7 +238,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(400, 448)</value>
+      <value>(448, 504)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -281,7 +281,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(400, 368)</value>
+      <value>(448, 416)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -324,7 +324,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 392)</value>
+      <value>(864, 440)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -375,7 +375,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(88, 356)</value>
+      <value>(136, 396)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -430,7 +430,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(80, 444)</value>
+      <value>(144, 476)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -485,7 +485,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 348)</value>
+      <value>(656, 396)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -540,7 +540,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 436)</value>
+      <value>(664, 484)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -583,7 +583,7 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value>Multiplies probed signal (power diff) to channel 2</value>
     </param>
     <param>
       <key>const</key>
@@ -599,7 +599,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(696, 252)</value>
+      <value>(544, 308)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -634,7 +634,7 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value>Power difference between two channels (est).</value>
     </param>
     <param>
       <key>affinity</key>
@@ -646,7 +646,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(920, 408)</value>
+      <value>(968, 456)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -681,7 +681,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(240, 436)</value>
+      <value>(288, 484)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -732,7 +732,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(240, 356)</value>
+      <value>(288, 404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -771,7 +771,8 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value># of points to keep
+ (for averaging purpose)</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -779,7 +780,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 20)</value>
+      <value>(328, 16)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -807,6 +808,42 @@
     </param>
   </block>
   <block>
+    <key>note</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value>A Hier block that roughly equalizes power level of
+Two input channels.
+
+Assumes that the two channels are receiving approximately
+same signals (and uses a slow moving average to calculate
+power offset).</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(912, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>note_0</value>
+    </param>
+    <param>
+      <key>note</key>
+      <value></value>
+    </param>
+  </block>
+  <block>
     <key>pad_sink</key>
     <param>
       <key>comment</key>
@@ -818,7 +855,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 212)</value>
+      <value>(1008, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -861,7 +898,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 268)</value>
+      <value>(1008, 308)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -904,7 +941,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(80, 208)</value>
+      <value>(72, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -947,7 +984,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(24, 276)</value>
+      <value>(72, 308)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -986,7 +1023,8 @@
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value># of points to throw
+ (for averaging purpose)</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -994,7 +1032,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 20)</value>
+      <value>(472, 16)</value>
     </param>
     <param>
       <key>_rotation</key>

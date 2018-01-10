@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Mon Oct  3 09:13:05 2016</timestamp>
   <block>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 86)</value>
+      <value>(0, 332)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -257,7 +257,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(360, 192)</value>
+      <value>(272, 152)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -290,6 +290,38 @@
     <param>
       <key>waveform</key>
       <value>analog.GR_COS_WAVE</value>
+    </param>
+  </block>
+  <block>
+    <key>note</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value>Transmits a sine (cosine) wave using HackRF (or with any OSMOCOM source).
+Change device arguments as necessary.</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(816, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>note_0</value>
+    </param>
+    <param>
+      <key>note</key>
+      <value></value>
     </param>
   </block>
   <block>
@@ -1212,7 +1244,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(520, 171)</value>
+      <value>(432, 132)</value>
     </param>
     <param>
       <key>_rotation</key>

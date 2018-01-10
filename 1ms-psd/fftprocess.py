@@ -5,27 +5,35 @@ from gnuradio import gr
 import time
 from consts import my_consts
 
+#Processes inputted PSD estimates by re-binning and aggregating them.
+#in: float32 vector, length configured in config.py (my_consts.fft_size)
+#out: float32 vector, ength configured in config.py (my_consts.out)
 class fftprocess(gr.basic_block):
 
+	#constructor
 	def __init__(self):
 		gr.basic_block.__init__(self,
 			name="fftprocess",
 			in_sig=[(numpy.float32,my_consts.fft_size())],
 			out_sig=[(numpy.float32,my_consts.agg_out())],
 			)
-			
+		
+		#set vars / consts
 		self.hold_times = my_consts.hold_times()
 		self.hold_cnt = 0
 		self.start_time = time.time()
 		self.temp = 0
 		
+		#vector in / out len
 		self.fft_size = my_consts.fft_size()
 		self.agg_out = my_consts.agg_out()
 
+	#worker
 	def general_work(self, input_items, output_items):
 		in0 = input_items[0]
 		out = output_items[0]
-		#number of fft blocks to generate during this iteration.
+
+		#Determine number of fft blocks to generate during this iteration.
 		cnt = min(len(in0)/self.hold_times, len(out))
 		in_pos = 0
 		

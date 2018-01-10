@@ -7,7 +7,13 @@ import scipy.io as sio
 import scipy.interpolate
 from consts import my_consts
 
-#./read.py filename -p val / -m filename.mat
+#A simple parser for the collected data. 
+#ex:
+#./read.py filename -p val ; #plots val th line of the data.
+#./read.py filename -m filename.mat	; #stores into matlab compat format.
+#./read.py filename -w val1 val2 ; #plots spectrogram (2D-plot) of the data from t1=va1 to t2=val2.
+
+#No arg: Print usage. Else: Parse args
 if len(sys.argv) <= 1:
 	print "usage"
 	print "read.py 'filename' -p 0 : plot 0th block."
@@ -39,15 +45,18 @@ data = np.delete(data,0,1)
 timestamp = timestamp.reshape(len(timestamp)/((my_consts.agg_out()+2)/2),((my_consts.agg_out()+2)/2))
 timestamp = timestamp[:,0]
 
+#Plot mode. (1D plot; at time t)
 if mode == '-p':
 	val = int(val)
 	print timestamp[val]
 	plt.plot(data[val])
 	plt.show()
 
+#Matlab store mode.
 if mode == '-m':
 	sio.savemat(val,{'data':data,'timestamp':timestamp})
 
+#Spectrogram plot (2D)
 #The part below is copy-paste job from https://stackoverflow.com/questions/33282368/plotting-a-2d-heatmap-with-matplotlib
 if mode == '-w':
 	plt.imshow(data[int(val_1):int(val_2),:], cmap='hot', interpolation='nearest')

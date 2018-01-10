@@ -1,1 +1,3 @@
-Scripts for automated I-Q data collection.
+A shell script for an automated I-Q data collection.
+
+Uses HackRF tools, not really GNU Radio.

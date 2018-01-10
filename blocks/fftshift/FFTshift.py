@@ -6,7 +6,9 @@ import time
 import numpy
 
 #applies fftshift to a vecter.
-#
+#Input: float32 (length: size)
+#Output: float32 (length: size)
+
 class FFTshift(gr.basic_block):
 	#constructor
 	def __init__(self,size,drop_when_overloaded):
@@ -20,6 +22,7 @@ class FFTshift(gr.basic_block):
 		in0 = input_items[0]
 		out = output_items[0]
 
+		#check input/output buffer len
 		if len(out) >= len(in0):
 			ps_len = len(in0)
 			consume_len = ps_len
@@ -30,9 +33,10 @@ class FFTshift(gr.basic_block):
 			ps_len = len(out)
 			consume_len = ps_len
 				
-		
+		#do
 		for cnt in range(0,ps_len):
 			out[cnt] = numpy.fft.fftshift(in0[cnt])
-			
+		
+		#consume, return	
 		self.consume_each(consume_len)
 		return ps_len

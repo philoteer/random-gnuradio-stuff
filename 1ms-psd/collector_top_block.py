@@ -6,6 +6,13 @@
 # Generated: Mon Aug 14 01:56:49 2017
 ##################################################
 
+##################################################
+#The Top flow graph; upon execution, it automatically collects PSD estimates of the configured
+#Channel (configured in const.py) and stores the results to a file (again, configured in
+#const.py) . 
+##################################################
+
+#if ran as a main program:
 if __name__ == '__main__':
 	import ctypes
 	import sys
@@ -16,6 +23,7 @@ if __name__ == '__main__':
 		except:
 			print "Warning: failed to XInitThreads()"
 
+#import
 from PyQt4 import Qt
 from gnuradio import analog
 from gnuradio import blocks
@@ -30,21 +38,23 @@ from gnuradio.filter import firdes
 from optparse import OptionParser
 from dumptofile import dumptofile
 from consts import my_consts
-
-if my_consts.hold_times() > 50:
-	from fftprocess_large import fftprocess
-else:
-	from fftprocess import fftprocess
-
 import sip
 import sys
 import time
 import osmosdr
 
+#Dynamically select the fftprocess block for optimal results.
+if my_consts.hold_times() > 50:
+	from fftprocess_large import fftprocess
+else:
+	from fftprocess import fftprocess
 
+#top block class start
 class nist(gr.top_block, Qt.QWidget):
 
+	#init
 	def __init__(self):
+		#init the top block and GUI.
 		gr.top_block.__init__(self, "Nist-v2")
 		Qt.QWidget.__init__(self)
 		self.setWindowTitle("Nist-v2")
@@ -70,12 +80,20 @@ class nist(gr.top_block, Qt.QWidget):
 		##################################################
 		# Variables
 		##################################################
+		
+		#FFT Len, Calibration factor, Windowing function compensation.
 		self.fft_len = fft_len = my_consts.fft_size()
 		self.cal_dB = cal_dB = my_consts.cal_dB()
 		self.window_compenstation = window_compenstation = 2.0
+		
+		#Target freq / sampling rate
 		self.target_freq = target_freq = my_consts.center_freq()
 		self.samp_rate = samp_rate = my_consts.samp_rate()
+		
+		#PSD adjustment factor (calculated using above variables)
 		self.psd_normalization = psd_normalization = ([(window_compenstation/fft_len) **2 ]*my_consts.agg_out()) #(2.0/FFT_SIZE) ^2 (applied after fft -> mag^2 to save processing power)
+
+		#calibration (applies the calibration factor and undo the power increase due to the amplifier gain).
 		self.cal = cal = 10**((cal_dB-my_consts.usrp_gain())/20)
 		if (my_consts.source_type() == "OSMOCOM"):
 			self.cal = cal = 10**((cal_dB-my_consts.osmosdr_RF_gain() - my_consts.osmosdr_IF_gain() - my_consts.osmosdr_BB_gain())/20)
@@ -93,7 +111,8 @@ class nist(gr.top_block, Qt.QWidget):
 		##################################################
 		# Blocks
 		##################################################
-
+		
+		#------------------------------signal source------------------------------
 		#dummy signal mode		
 		if my_consts.source_type() == "CONST":
 			self.uhd_usrp_source_0 = analog.sig_source_c(0, analog.GR_CONST_WAVE, 0, 0, 1)
@@ -126,7 +145,9 @@ class nist(gr.top_block, Qt.QWidget):
 			self.uhd_usrp_source_0.set_bb_gain(osmosdr_BB_gain, 0)
 			self.uhd_usrp_source_0.set_antenna(my_consts.antenna_port(), 0)
 			self.uhd_usrp_source_0.set_bandwidth(samp_rate, 0)
-		#junks
+		#------------------------------signal source end--------------------------
+
+		#junks (removed QT gui)
 		self.qtgui_vector_sink_f_0 = qtgui.vector_sink_f(
 			new_bin_size,
 			0,
@@ -164,7 +185,7 @@ class nist(gr.top_block, Qt.QWidget):
 		#self._qtgui_vector_sink_f_0_win = sip.wrapinstance(self.qtgui_vector_sink_f_0.pyqwidget(), Qt.QWidget)
 		#self.top_layout.addWidget(self._qtgui_vector_sink_f_0_win)
 
-
+		#PSD Normalizer / FFT / log10 / data -> Mag^2 blocks
 		self.mul_const = blocks.multiply_const_vff((psd_normalization))
 		self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (window.hann(fft_len)), True, my_consts.fft_threads())
 		self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, fft_len)
@@ -175,7 +196,7 @@ class nist(gr.top_block, Qt.QWidget):
 		if abs(cal) > 0.1:
 			self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vcc((cal, ))
 
-		#my blocks
+		#my blocks (process/aggregrate FFT data / dump data to files)
 		self.fftprocess = fftprocess()
 		self.dumptofile = dumptofile()
 
@@ -230,12 +251,13 @@ class nist(gr.top_block, Qt.QWidget):
 			self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.blocks_probe_rate_0, 0))
 			self.msg_connect((self.blocks_probe_rate_0, 'rate'), (self.blocks_message_debug_0, 'print'))
 
+	#exit event
 	def closeEvent(self, event):
 		self.settings = Qt.QSettings("GNU Radio", "nist")
 		self.settings.setValue("geometry", self.saveGeometry())
 		event.accept()
 
-
+	#------Accessors, Mutators------------------
 	def get_fft_len(self):
 		return self.fft_len
 
@@ -299,16 +321,19 @@ class nist(gr.top_block, Qt.QWidget):
 	def set_cal(self, cal):
 		self.cal = cal
 		self.blocks_multiply_const_vxx_0.set_k((self.cal, ))
+	#------Accessors, Mutators end------------------
 
-
+#The main function 
 def main(top_block_cls=nist, options=None):
 
+	#Qt init
 	from distutils.version import StrictVersion
 	if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):
 		style = gr.prefs().get_string('qtgui', 'style', 'raster')
 		Qt.QApplication.setGraphicsSystem(style)
 	qapp = Qt.QApplication(sys.argv)
 
+	#Top block init / start
 	tb = top_block_cls()
 	tb.start()
 	tb.show()
@@ -319,6 +344,6 @@ def main(top_block_cls=nist, options=None):
 	qapp.connect(qapp, Qt.SIGNAL("aboutToQuit()"), quitting)
 	qapp.exec_()
 
-
+#If ran as a main program, run the 'main' fct above.
 if __name__ == '__main__':
 	main()

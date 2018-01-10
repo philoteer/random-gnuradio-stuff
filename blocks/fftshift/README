@@ -1,1 +1,2 @@
-FFT Shift block for GNURadio 3.7.9 (for FFT-related blocks which cannot do this by itself)
+FFT Shift block for GNURadio 3.7.9 (for FFT-related blocks which cannot do this by itself).
+A Python version, and a GRC Hier block version exists.
