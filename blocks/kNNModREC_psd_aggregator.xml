@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<block>
+  <name>psd_aggregator</name>
+  <key>kNNModREC_psd_aggregator</key>
+  <category>[kNNModREC]</category>
+  <import>import kNNModREC</import>
+  <make>kNNModREC.psd_aggregator($f_start, $f_end, $fft_len, $total_len)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>f_start</name>
+    <key>f_start</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>f_end</name>
+    <key>f_end</key>
+    <type>float</type>
+  </param>
+  
+  <param>
+    <name>fft_len</name>
+    <key>fft_len</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>total_len</name>
+    <key>total_len</key>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>$fft_len</vlen>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <vlen>$total_len</vlen>
+  </source>
+</block>
