@@ -20,6 +20,7 @@ Have nothing really useful here (just for personal research), but take 'em if yo
 	* vector_slicer: slices a input vector, and outputs only a part of the sliced vector.
 
 	* fftshift: applies fftshift() to the input vector, so as the FFT data will be orderd from -pi to pi instead of 0 to 2pi.
+	* vector_average: vector moving average (for older version of GNU Radio).
 
 * AoA: A simple phase-difference angle of arrival flowgraph.  Incomplete.
 
