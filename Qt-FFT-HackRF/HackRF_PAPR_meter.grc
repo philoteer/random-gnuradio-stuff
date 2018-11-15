@@ -642,7 +642,7 @@
     </param>
   </block>
   <block>
-    <key>blocks_keep_m_in_n</key>
+    <key>blocks_integrate_xx</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -656,12 +656,16 @@
       <value></value>
     </param>
     <param>
+      <key>decim</key>
+      <value>int(data_chunk_size ** 0.5)</value>
+    </param>
+    <param>
       <key>_enabled</key>
       <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 604)</value>
+      <value>(448, 620)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -669,11 +673,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_keep_m_in_n_0</value>
+      <value>blocks_integrate_xx_0</value>
     </param>
     <param>
-      <key>m</key>
-      <value>1</value>
+      <key>type</key>
+      <value>float</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -684,16 +688,59 @@
       <value>0</value>
     </param>
     <param>
-      <key>n</key>
-      <value>20</value>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_integrate_xx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>int(data_chunk_size ** 0.5)</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(752, 620)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_integrate_xx_0_0</value>
     </param>
     <param>
       <key>type</key>
       <value>float</value>
     </param>
     <param>
-      <key>offset</key>
+      <key>maxoutbuf</key>
       <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -752,7 +799,7 @@
     </param>
   </block>
   <block>
-    <key>blocks_moving_average_xx</key>
+    <key>blocks_multiply_const_vxx</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -760,6 +807,10 @@
     <param>
       <key>comment</key>
       <value></value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>1.0/int(data_chunk_size ** 0.5)</value>
     </param>
     <param>
       <key>affinity</key>
@@ -771,7 +822,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(592, 604)</value>
+      <value>(600, 620)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -779,19 +830,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_moving_average_xx_0</value>
+      <value>blocks_multiply_const_vxx_0</value>
     </param>
     <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>length</key>
-      <value>data_chunk_size</value>
-    </param>
-    <param>
-      <key>max_iter</key>
-      <value>data_chunk_size*4</value>
+      <key>type</key>
+      <value>float</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -802,12 +845,59 @@
       <value>0</value>
     </param>
     <param>
-      <key>scale</key>
-      <value>1.0/data_chunk_size</value>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_multiply_const_vxx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>1.0/int(data_chunk_size ** 0.5)</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(904, 620)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_const_vxx_0_0</value>
     </param>
     <param>
       <key>type</key>
       <value>float</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -881,7 +971,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(824, 612)</value>
+      <value>(1072, 612)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -977,7 +1067,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2423,7 +2513,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(968, 624)</value>
+      <value>(1184, 624)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2887,8 +2977,14 @@ and replace "Moving Average"
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_keep_m_in_n_0</source_block_id>
-    <sink_block_id>blocks_moving_average_xx_0</sink_block_id>
+    <source_block_id>blocks_integrate_xx_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_integrate_xx_0_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2899,7 +2995,13 @@ and replace "Moving Average"
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_moving_average_xx_0</source_block_id>
+    <source_block_id>blocks_multiply_const_vxx_0</source_block_id>
+    <sink_block_id>blocks_integrate_xx_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0_0</source_block_id>
     <sink_block_id>blocks_nlog10_ff_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -2942,7 +3044,7 @@ and replace "Moving Average"
   </connection>
   <connection>
     <source_block_id>virtual_source_0_0</source_block_id>
-    <sink_block_id>blocks_keep_m_in_n_0</sink_block_id>
+    <sink_block_id>blocks_integrate_xx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
