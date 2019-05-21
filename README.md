@@ -21,6 +21,7 @@ Have nothing really useful here (just for personal research), but take 'em if yo
 
 	* fftshift: applies fftshift() to the input vector, so as the FFT data will be orderd from -pi to pi instead of 0 to 2pi.
 	* vector_average: vector moving average (for older version of GNU Radio).
+	* wav_file_squelch: removes "zeros" from a wav file (part of the wav file which does not actually contain audio). Very crude and slow.
 
 * AoA: A simple phase-difference angle of arrival flowgraph.  Incomplete.
 
