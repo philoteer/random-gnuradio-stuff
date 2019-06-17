@@ -38,7 +38,7 @@
     </param>
     <param>
       <key>generate_options</key>
-      <value>qt_gui</value>
+      <value>no_gui</value>
     </param>
     <param>
       <key>hier_block_src_path</key>
@@ -66,7 +66,7 @@
     </param>
     <param>
       <key>run_options</key>
-      <value>prompt</value>
+      <value>run</value>
     </param>
     <param>
       <key>run</key>
@@ -101,7 +101,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(280, 12)</value>
+      <value>(304, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -128,7 +128,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(176, 12)</value>
+      <value>(208, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -283,7 +283,7 @@ class zero_removal(gr.basic_block):
 		out1 = output_items[1]
 		
 		#length of data to process
-		proc_len = min(len(output_items[0]), len(output_items[1]), len(out0), len(out1)) - self.zeros_cnt
+		proc_len = min(len(output_items[0]), len(output_items[1]), len(out0), len(out1))
 		
 		#skip if the data is too short
 		if(proc_len &lt;= 0):
@@ -368,7 +368,7 @@ class zero_removal(gr.basic_block):
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
