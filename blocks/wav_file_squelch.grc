@@ -244,12 +244,16 @@
   <block>
     <key>epy_block</key>
     <param>
+      <key>averaging_weight</key>
+      <value>0.8</value>
+    </param>
+    <param>
       <key>alias</key>
       <value></value>
     </param>
     <param>
       <key>_io_cache</key>
-      <value>('Zero Remover', 'zero_removal', [('zeros_cnt', '5'), ('threshold_amplitude', '0')], [('0', 'float', 1), ('1', 'float', 1)], [('0', 'float', 1), ('1', 'float', 1)], '', ['threshold_amplitude', 'zeros_cnt'])</value>
+      <value>('Zero Remover', 'zero_removal', [('averaging_weight', '0.8'), ('threshold_power', '0')], [('0', 'float', 1), ('1', 'float', 1)], [('0', 'float', 1), ('1', 'float', 1)], '', ['averaging_weight', 'threshold_power'])</value>
     </param>
     <param>
       <key>_source_code</key>
@@ -262,16 +266,17 @@ from gnuradio import gr
 class zero_removal(gr.basic_block):
 
 	#constructor
-	def __init__(self, zeros_cnt = 5, threshold_amplitude = 0):
+	def __init__(self, averaging_weight = 0.8, threshold_power = 0):
 		gr.basic_block.__init__(self,
 			name="Zero Remover",
 			in_sig=[(numpy.float32),(numpy.float32)],
 			out_sig=[(numpy.float32),(numpy.float32)])
 			
-		self.zeros_cnt = zeros_cnt
-		self.threshold_amplitude = threshold_amplitude
-		self.zeros_so_far = 0
-		
+		self.averaging_weight = averaging_weight	#weight of the previous data
+		self.threshold_power = threshold_power
+		self.current_power = 0
+		self.start_counter = 0
+		self.start_point = int(1/(1-averaging_weight))
 
 	#The main worker
 	def general_work(self, input_items, output_items):
@@ -292,12 +297,8 @@ class zero_removal(gr.basic_block):
 		#do!
 		store_cnt = 0
 		for i in range (0, proc_len):
-			if abs(in0[i]) &lt;= self.threshold_amplitude and abs(in1[i]) &lt;= self.threshold_amplitude:
-				self.zeros_so_far += 1
-			else:
-				self.zeros_so_far = 0
-				
-			if self.zeros_so_far &lt; self.zeros_cnt:
+			self.current_power = self.current_power * (self.averaging_weight) + (1-self.averaging_weight) * ((abs(in0[i]) ** 2)/2  + (abs(in1[i]) **2)/2);
+			if self.current_power &gt; self.threshold_power:
 				out0[store_cnt] = in0[i]
 				out1[store_cnt] = in1[i]
 				store_cnt += 1
@@ -328,12 +329,8 @@ class zero_removal(gr.basic_block):
       <value>epy_block_0</value>
     </param>
     <param>
-      <key>threshold_amplitude</key>
-      <value>0.001</value>
-    </param>
-    <param>
-      <key>zeros_cnt</key>
-      <value>5</value>
+      <key>threshold_power</key>
+      <value>0.0000001</value>
     </param>
   </block>
   <block>
