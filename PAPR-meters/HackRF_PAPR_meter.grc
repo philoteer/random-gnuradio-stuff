@@ -156,6 +156,49 @@
     <key>variable_function_probe</key>
     <param>
       <key>block_id</key>
+      <value>probe_noise_power_avg</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>function_args</key>
+      <value></value>
+    </param>
+    <param>
+      <key>function_name</key>
+      <value>level</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1104, 116)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>avg_noise_power</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>poll_rate</key>
+      <value>10</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_function_probe</key>
+    <param>
+      <key>block_id</key>
       <value>probe_avg_power</value>
     </param>
     <param>
@@ -256,6 +299,100 @@
     <param>
       <key>widget</key>
       <value>counter_slider</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_push_button</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(464, 204)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>capture_noise</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Capture Noise Power (when only noise is being received) (Press until noise estimate updates)</value>
+    </param>
+    <param>
+      <key>pressed</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>released</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>bool</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_check_box</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>false</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(776, 108)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>correct_noise</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Undo Effect of Noise</value>
+    </param>
+    <param>
+      <key>true</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>int</value>
     </param>
   </block>
   <block>
@@ -379,6 +516,49 @@
     <key>variable_function_probe</key>
     <param>
       <key>block_id</key>
+      <value>probe_noise_power</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>function_args</key>
+      <value></value>
+    </param>
+    <param>
+      <key>function_name</key>
+      <value>level</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(936, 116)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>max_noise_power</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>poll_rate</key>
+      <value>10</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_function_probe</key>
+    <param>
+      <key>block_id</key>
       <value>probe_max_power</value>
     </param>
     <param>
@@ -416,6 +596,49 @@
     <param>
       <key>poll_rate</key>
       <value>10</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_label</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>max_noise_power</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(880, 220)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>noise_est</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Estimated Noise power</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
     </param>
   </block>
   <block>
@@ -563,7 +786,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>max_power - avg_power</value>
+      <value>max_power - avg_power if (max_power - avg_power)&gt;=0 else 0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -599,6 +822,108 @@
     </param>
   </block>
   <block>
+    <key>blocks_add_const_vxx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value>power error corrector</value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>-max_noise_power if correct_noise else 0</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(664, 668)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_add_const_vxx_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_add_const_vxx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value>power error corrector</value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>-avg_noise_power if correct_noise else 0</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(864, 748)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_add_const_vxx_0_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_complex_to_mag_squared</key>
     <param>
       <key>alias</key>
@@ -618,7 +943,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 456)</value>
+      <value>(200, 464)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -665,7 +990,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(448, 620)</value>
+      <value>(272, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -716,7 +1041,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(752, 620)</value>
+      <value>(576, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -763,7 +1088,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(616, 540)</value>
+      <value>(440, 668)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -822,7 +1147,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 620)</value>
+      <value>(424, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -873,7 +1198,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(904, 620)</value>
+      <value>(704, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -920,7 +1245,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(824, 532)</value>
+      <value>(808, 660)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -971,7 +1296,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1072, 612)</value>
+      <value>(976, 740)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1022,7 +1347,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 540)</value>
+      <value>(264, 668)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1054,6 +1379,178 @@
     </param>
   </block>
   <block>
+    <key>epy_block</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_io_cache</key>
+      <value>('Sample Snapshot', 'blk', [('button', '1')], [('0', 'float', 1)], [('0', 'float', 1)], 'Embedded Python Block example - a simple multiply const', ['button'])</value>
+    </param>
+    <param>
+      <key>button</key>
+      <value>capture_noise</value>
+    </param>
+    <param>
+      <key>_source_code</key>
+      <value>"""
+Embedded Python Blocks:
+
+Each time this file is saved, GRC will instantiate the first class it finds
+to get ports and parameters of your block. The arguments to __init__  will
+be the parameters. All of them are required to have default values!
+"""
+
+import numpy as np
+from gnuradio import gr
+
+
+class blk(gr.basic_block):  # other base classes are basic_block, decim_block, interp_block
+	"""Embedded Python Block example - a simple multiply const"""
+
+	def __init__(self, button=1):  # only default arguments here
+		"""arguments to this function show up as parameters in GRC"""
+		gr.basic_block.__init__(
+			self,
+			name='Sample Snapshot',   # will show up in GRC
+			in_sig=[np.float32],
+			out_sig=[np.float32]
+		)
+		# if an attribute with the same name as a parameter is found,
+		# a callback is registered (properties work, too).
+		self.button = button
+		self.button_prev = button
+		self.prev_val = 0
+		self.latest = 0
+
+	def general_work(self, input_items, output_items):
+		proc_len = len(input_items[0])
+		
+		if len(output_items[0]) &gt;= 1:
+			output_items[0][0] = self.prev_val
+			
+		if proc_len &gt;= 1:
+			self.latest = input_items[0][-1]
+
+		if self.button and not(self.button_prev):
+			print "Noise Data Capture."
+			self.prev_val = self.latest
+		
+		self.button_prev = self.button
+		
+		self.consume(0, proc_len)
+		return 1 if proc_len &gt;= 1 and len(output_items[0]) &gt;= 1 else 0
+</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(656, 532)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>epy_block_0</value>
+    </param>
+  </block>
+  <block>
+    <key>epy_block</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_io_cache</key>
+      <value>('Sample Snapshot', 'blk', [('button', '1')], [('0', 'float', 1)], [('0', 'float', 1)], 'Embedded Python Block example - a simple multiply const', ['button'])</value>
+    </param>
+    <param>
+      <key>button</key>
+      <value>capture_noise</value>
+    </param>
+    <param>
+      <key>_source_code</key>
+      <value>"""
+Embedded Python Blocks:
+
+Each time this file is saved, GRC will instantiate the first class it finds
+to get ports and parameters of your block. The arguments to __init__  will
+be the parameters. All of them are required to have default values!
+"""
+
+import numpy as np
+from gnuradio import gr
+
+
+class blk(gr.basic_block):  # other base classes are basic_block, decim_block, interp_block
+	"""Embedded Python Block example - a simple multiply const"""
+
+	def __init__(self, button=1):  # only default arguments here
+		"""arguments to this function show up as parameters in GRC"""
+		gr.basic_block.__init__(
+			self,
+			name='Sample Snapshot',   # will show up in GRC
+			in_sig=[np.float32],
+			out_sig=[np.float32]
+		)
+		# if an attribute with the same name as a parameter is found,
+		# a callback is registered (properties work, too).
+		self.button = button
+		self.button_prev = button
+		self.prev_val = 0
+		self.latest = 0
+
+	def general_work(self, input_items, output_items):
+		proc_len = len(input_items[0])
+		
+		if len(output_items[0]) &gt;= 1:
+			output_items[0][0] = self.prev_val
+			
+		if proc_len &gt;= 1:
+			self.latest = input_items[0][-1]
+
+		if self.button and not(self.button_prev):
+			print "Noise Data Capture."
+			self.prev_val = self.latest
+		
+		self.button_prev = self.button
+		
+		self.consume(0, proc_len)
+		return 1 if proc_len &gt;= 1 and len(output_items[0]) &gt;= 1 else 0
+</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(880, 844)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>epy_block_0_0</value>
+    </param>
+  </block>
+  <block>
     <key>note</key>
     <param>
       <key>alias</key>
@@ -1071,7 +1568,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1088, 116)</value>
+      <value>(1088, 228)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2513,7 +3010,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1184, 624)</value>
+      <value>(1072, 752)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2548,7 +3045,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(968, 544)</value>
+      <value>(952, 672)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2557,6 +3054,76 @@ and replace "Moving Average"
     <param>
       <key>id</key>
       <value>probe_max_power</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_probe_signal_x</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(952, 536)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>probe_noise_power</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_probe_signal_x</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1072, 848)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>probe_noise_power_avg</value>
     </param>
     <param>
       <key>type</key>
@@ -2611,7 +3178,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 364)</value>
+      <value>(216, 372)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2874,7 +3441,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 452)</value>
+      <value>(384, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2928,7 +3495,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 452)</value>
+      <value>(32, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2955,7 +3522,7 @@ and replace "Moving Average"
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(232, 540)</value>
+      <value>(56, 668)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2970,6 +3537,18 @@ and replace "Moving Average"
       <value>relative_power</value>
     </param>
   </block>
+  <connection>
+    <source_block_id>blocks_add_const_vxx_0</source_block_id>
+    <sink_block_id>blocks_nlog10_ff_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_add_const_vxx_0_0</source_block_id>
+    <sink_block_id>blocks_nlog10_ff_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
   <connection>
     <source_block_id>blocks_complex_to_mag_squared_0</source_block_id>
     <sink_block_id>virtual_sink_0</sink_block_id>
@@ -2990,7 +3569,13 @@ and replace "Moving Average"
   </connection>
   <connection>
     <source_block_id>blocks_max_xx_0</source_block_id>
-    <sink_block_id>blocks_nlog10_ff_0</sink_block_id>
+    <sink_block_id>blocks_add_const_vxx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_max_xx_0</source_block_id>
+    <sink_block_id>epy_block_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -3002,7 +3587,13 @@ and replace "Moving Average"
   </connection>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_0_0</source_block_id>
-    <sink_block_id>blocks_nlog10_ff_0_0</sink_block_id>
+    <sink_block_id>blocks_add_const_vxx_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_0_0</source_block_id>
+    <sink_block_id>epy_block_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -3021,6 +3612,18 @@ and replace "Moving Average"
   <connection>
     <source_block_id>blocks_stream_to_vector_0</source_block_id>
     <sink_block_id>blocks_max_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>epy_block_0</source_block_id>
+    <sink_block_id>probe_noise_power</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>epy_block_0_0</source_block_id>
+    <sink_block_id>probe_noise_power_avg</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
