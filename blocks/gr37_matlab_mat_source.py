@@ -5,7 +5,7 @@ import scipy.io as sio
 
 class blk(gr.sync_block):  
 	
-	def __init__(self, file_path="/media/piloteer/6CBE-D605/raw_tx.mat", var_name = "x_cg"):  # only default arguments here
+	def __init__(self, file_path="/some/path/raw_tx.mat", var_name = "x_cg"):  # only default arguments here
 		"""arguments to this function show up as parameters in GRC"""
 		gr.sync_block.__init__(
 			self,
