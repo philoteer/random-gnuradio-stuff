@@ -1,0 +1,212 @@
+options:
+  parameters:
+    author: ''
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: parse_csv
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '24000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: audio_sink_0
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 164.0]
+    rotation: 0
+    state: disabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 472.0]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: 1/32768
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 212.0]
+    rotation: 0
+    state: disabled
+- name: blocks_probe_rate_0
+  id: blocks_probe_rate
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.15'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mintime: '500.0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 432.0]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 272.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\n\nclass blk(gr.sync_block):  # other base classes\
+      \ are basic_block, decim_block, interp_block\n\t\"\"\"Embedded Python Block\
+      \ example - a simple multiply const\"\"\"\n\n\tdef __init__(self, file_path=\"\
+      \uBC14\uD0D5\uD654\uBA74/\uC815\uC0C1_rawdata_5\uBD84_\uC778\uD130\uBC8C(\uC18D\
+      \uB3C4)\uBCC4_\uD14C\uC2A4\uD2B8\uC6A9/normal_raw_data_for_test_5min_inverter1/head_pulley_acceleration_accel_x.csv\"\
+      ):  # only default arguments here\n\t\t\"\"\"arguments to this function show\
+      \ up as parameters in GRC\"\"\"\n\t\tgr.sync_block.__init__(\n\t\t\tself,\n\t\
+      \t\tname='CSV Parser',   # will show up in GRC\n\t\t\tin_sig=[],\n\t\t\tout_sig=[np.float32]\n\
+      \t\t)\n\t\tself.file_path = file_path\n\t\ttry:\n\t\t\tself.csv = np.loadtxt(file_path,\
+      \ delimiter=\",\", dtype=np.float32)\n\t\texcept:\n\t\t\tself.csv = []\n\t\t\
+      self.pos = 0\n\t\tself.csv_len = len(self.csv)\n\n\tdef work(self, input_items,\
+      \ output_items):\n\t\tnext_pos = min(self.pos + len(output_items[0]), self.csv_len)\n\
+      \t\tout_len = next_pos - self.pos\n\t\t\n\t\toutput_items[0][0:out_len] = self.csv[self.pos:self.pos+out_len]\n\
+      \t\t\n\t\tif(next_pos == self.csv_len):\n\t\t\tself.pos = 0\n\t\telse:\n\t\t\
+      \tself.pos = next_pos\n\t\t\t\n\t\treturn out_len\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    file_path: '"/home/piloteer/foo.csv"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: "('CSV Parser', 'blk', [('file_path', \"'\uBC14\uD0D5\uD654\uBA74/\uC815\
+      \uC0C1_rawdata_5\uBD84_\uC778\uD130\uBC8C(\uC18D\uB3C4)\uBCC4_\uD14C\uC2A4\uD2B8\
+      \uC6A9/normal_raw_data_for_test_5min_inverter1/head_pulley_acceleration_accel_x.csv'\"\
+      )], [], [('0', 'float', 1)], 'Embedded Python Block example - a simple multiply\
+      \ const', ['file_path'])"
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [56, 240.0]
+    rotation: 0
+    state: true
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: float
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [608, 280.0]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_probe_rate_0, rate, blocks_message_debug_0, print]
+- [blocks_throttle_0, '0', qtgui_sink_x_0, '0']
+- [epy_block_0, '0', blocks_multiply_const_vxx_0, '0']
+- [epy_block_0, '0', blocks_probe_rate_0, '0']
+- [epy_block_0, '0', blocks_throttle_0, '0']
+
+metadata:
+  file_format: 1
