@@ -6,7 +6,7 @@ import socket
 
 class blk(gr.sync_block):  # other base classes are basic_block, decim_block, interp_block
 
-	def __init__(self, server_ip = "192.168.0.1", server_port = 80, mac_addr="b8:27:eb:70:34:6c"):  # only default arguments here
+	def __init__(self, server_ip = "192.168.0.1", server_port = 80):  # only default arguments here
 		gr.sync_block.__init__(
 			self,
 			name='Custom UDP Sink',   # will show up in GRC
@@ -14,7 +14,6 @@ class blk(gr.sync_block):  # other base classes are basic_block, decim_block, in
 			out_sig=[]
 		)
 		
-		self.mac_addr = mac_addr
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		self.dest = (server_ip, server_port)
 		self.pkt_max_len = 508
