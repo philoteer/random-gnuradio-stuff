@@ -27,8 +27,8 @@ class blk(gr.sync_block):  # other base classes are basic_block, decim_block, in
 			self.sock.sendto(data_tx[self.pkt_max_len *cnt:self.pkt_max_len *cnt+self.pkt_max_len],self.dest)
 			cnt += 1
 		
+		#probably not necessary anymore?
 		if(len(data_tx[self.pkt_max_len *cnt:]) > 0):
 			self.sock.sendto(data_tx[self.pkt_max_len *cnt:],self.dest)			
 		
-		print(data_len)
 		return len(input_items[0])
