@@ -10,7 +10,7 @@ class blk(gr.sync_block):
 			self,
 			name='tty source',   # will show up in GRC 
 			in_sig=[],
-			out_sig=[np.int16]
+			out_sig=[np.float32]
 		) 
 		
 		self.serial = None
